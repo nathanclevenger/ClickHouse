@@ -222,7 +222,7 @@ do
     sleep 1
 done
 
-#./setup_hdfs_minicluster.sh
+./setup_hdfs_minicluster.sh
 
 
 setup_logs_replication
