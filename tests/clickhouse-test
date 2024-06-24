@@ -1977,6 +1977,10 @@ class TestSuite:
                 )
 
             def filter_func(x: str) -> bool:
+                # Do not run this test in parallel batches,
+                # as it is designed to be executed in a single batch and may produce flaky results otherwise
+                if x == "00002_log_and_exception_messages_formatting.sql":
+                    return False
                 return bool(
                     stringhash(x) % args.run_by_hash_total == args.run_by_hash_num
                 )
