@@ -224,6 +224,7 @@ done
 
 ./setup_hdfs_minicluster.sh
 
+
 setup_logs_replication
 
 attach_gdb_to_clickhouse || true  # FIXME: to not break old builds, clean on 2023-09-01
