@@ -1565,12 +1565,12 @@ class TestCase:
         if self.ext == ".sql" and args.cloud:
             # Get at least some logs, because we don't have access to system.text_log and pods...
             pattern = (
-                "{client} --send_logs_level={logs_level} {secure} --multiquery --disable_suggestion {options}"
+                "{client} --send_logs_level={logs_level} {secure} --multiquery {options}"
                 " --send_logs_level=trace < {test} > {stdout}  2>> /test_output/some_logs_from_server.log"
             )
         elif self.ext == ".sql" and not args.cloud:
             pattern = (
-                "{client} --send_logs_level={logs_level} {secure} --multiquery --disable_suggestion {options} < "
+                "{client} --send_logs_level={logs_level} {secure} --multiquery {options} < "
                 + pattern
             )
 
@@ -3513,8 +3513,6 @@ if __name__ == "__main__":
             os.environ["CLICKHOUSE_URL_PARAMS"] += "&"
         else:
             os.environ["CLICKHOUSE_URL_PARAMS"] = ""
-
-        os.environ["CLICKHOUSE_CLIENT_OPT"] += "--disable_suggestion "
 
         client_options_query_str = get_additional_client_options_url(args)
         args.client_options_query_str = client_options_query_str + "&"
